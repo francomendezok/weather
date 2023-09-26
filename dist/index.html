@@ -3,8 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css">
     <title>Weather</title>
     <script src="main.js" defer></script>
   </head>
-  <body></body>
+  <body>
+    <header>
+        <div class="center">
+            <div class="logo-container">
+                <img src="./images/earth.png" alt="">
+                <p>Weather APP</p>
+            </div>
+            <div class="search-container">
+                <input type="text" name="text" id="search-input">
+                <button type="submit">Search</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="city-important-info">
+            <div class="inner-city-time">
+                <p id="city">New York</p>
+                <p id="hour">9:30</p>
+            </div>
+            <div class="todays-weather-img"></div>
+            <div class="inner-temeprature">
+                <p id="temperature">AQI 70</p>
+                <p id="high-and-low">-5 0</p>
+            </div>
+        </div>
+        <div class="city-not-important-info"></div>
+        <div class="forecast">
+            <div class="day-forecast">
+                <p></p>
+                <img src="" alt="">
+                <p class="day-forecast-time"></p>
+            </div>
+            <div class="day-forecast">
+                <p></p>
+                <img src="" alt="">
+                <p class="day-forecast-time"></p>
+            </div>
+            <div class="day-forecast">
+                <p></p>
+                <img src="" alt="">
+                <p class="day-forecast-time"></p>
+            </div>
+        </div>
+    </main>
+    <footer></footer>
+  </body>
 </html>
+
+
+<!--Get IP from user and charge the weather in that city
+change favicon depends on weather-->
