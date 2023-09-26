@@ -15,24 +15,31 @@
                 <p>Weather APP</p>
             </div>
             <div class="search-container">
-                <input type="text" name="text" id="search-input">
-                <button type="submit">Search</button>
+                <input type="text" name="text" id="search-input" placeholder="Search Location">
+                <button id="submit" type="submit">Search</button>
             </div>
+            
         </div>
     </header>
     <main>
+        <div id="first-info">
+            <h1 id="title"></h1>
+            <img id="flag" src="" alt="">
+        </div>
         <div class="city-important-info">
             <div class="inner-city-time">
-                <p id="city">New York</p>
-                <p id="hour">9:30</p>
+                <p id="city"></p>
+                <p id="hour"></p>
             </div>
-            <div class="todays-weather-img"></div>
-            <div class="inner-temeprature">
-                <p id="temperature">AQI 70</p>
-                <p id="high-and-low">-5 0</p>
+            <div class="todays-weather-img">
+                <img src="#" alt="" id="img-weather">
+                <p id="condition"></p>
+            </div>
+            <div class="inner-city-temperature">
+                <p id="temperature"></p>
+                <p id="temperature-fahrenheit"></p>
             </div>
         </div>
-        <div class="city-not-important-info"></div>
         <div class="forecast">
             <div class="day-forecast">
                 <p></p>
