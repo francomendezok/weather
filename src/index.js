@@ -1,4 +1,19 @@
- 
+  function getDates() {
+  const today = new Date();
+  
+  const tomorrow = new Date(today);
+  tomorrow.setDate(today.getDate() + 1);
+  
+  const dayAfterTomorrow = new Date(today);
+  dayAfterTomorrow.setDate(today.getDate() + 2);
+
+  const nextDayAfterTomorrow = new Date(today);
+  nextDayAfterTomorrow.setDate(today.getDate() + 3);
+
+  const dates = [today, tomorrow, dayAfterTomorrow, nextDayAfterTomorrow];
+  const newDates = dates.map(day => day.toLocaleDateString('en-US', { weekday: 'long' }));
+  return newDates
+  }
   async function getUserLocation() {
     try {
       const response = await fetch('https://ipinfo.io?token=c754c5e436b57a');
@@ -26,6 +41,7 @@
             }
         }
     } catch (error) {
+        alert('Please type a real location');
         console.log(error);
     }
   }
@@ -50,26 +66,55 @@
     const localTime = fullHour.split(' ');
     const condition = document.getElementById('condition');
     const temperature = document.getElementById('temperature');
-    const temperatureF = document.getElementById('temperature-fahrenheit');
+    const maxMin = document.getElementById('temperature-max-min');
     const title = document.getElementById('title');
     const flagIMG = document.getElementById('flag');
+    const favicon = document.querySelector("link[rel*='icon']")
+
+
     title.textContent =  `${data.location.name}, ${data.location.country}` ;
     flagIMG.src = flag;
-    
+    favicon.href = flag;
+    document.title = data.location.name;
     cityName.textContent = data.location.name;
     hour.textContent = localTime[1];
     temperature.textContent = `${data.current.temp_c} Celsius`;
-    temperatureF.textContent = `${data.current.temp_f} Fahrenheit`;
+    maxMin.textContent = `Max: ${data.forecast.forecastday[0].day.maxtemp_c}, Min: ${data.forecast.forecastday[0].day.mintemp_c}`;
     img.src = src;
     condition.textContent = await data.current.condition.text;
   }
   
-renderWeather();
+  async function renderForecast (city) {
+    const data = await getWeather(city);
+    const week = getDates();
+    week[0] = 'Today';
+    const days = document.querySelectorAll('.next-days');
+    const arr = [...days];
+
+    for (let i = 0; i < 3; i++) {
+      arr[i].textContent = week[i];
+    }
+  }
 
 
+  
+  
 const submit = document.getElementById('submit');
 const searchInput = document.getElementById('search-input');
 submit.addEventListener('click', event => {
-    event.preventDefault();
-    renderWeather(searchInput.value);
+  event.preventDefault();
+  renderWeather(searchInput.value);
 })
+
+
+
+
+// Handle error with better design and UI when searching //
+// Forecast Section // 
+// Charge Loader untill the promise is ready // 
+// Design Input and submit // 
+// Media Queries // 
+
+
+renderWeather();
+renderForecast();
