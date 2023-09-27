@@ -27,21 +27,27 @@
   async function getWeather (search) {
     try {
         if (search) {
-            const url = "https://api.weatherapi.com/v1/forecast.json?key=6c38787677004652bda203136232209&q=" + search
-            const weather = await fetch(url)
-            const data = await weather.json();
-            return data;
+          const searchInput = document.getElementById('search-input');
+            const url = "https://api.weatherapi.com/v1/forecast.json?key=6c38787677004652bda203136232209&days=3&q=" + search
+            const weather = await fetch(url);
+            if (weather.status !== 400) {
+              searchInput.placeholder = 'Search Location';
+              const data = await weather.json();
+              return data;
+            }
+            else {
+              searchInput.placeholder = 'City not found 😕';
+            };
         } else {
             const city = await getUserLocation();
             if (city) {
-                const url = "https://api.weatherapi.com/v1/forecast.json?key=6c38787677004652bda203136232209&q=" + city.city
+                const url = "https://api.weatherapi.com/v1/forecast.json?key=6c38787677004652bda203136232209&days=3&q=" + city.city
                 const weather = await fetch(url)
                 const data = await weather.json();
                 return data;
             }
         }
     } catch (error) {
-        alert('Please type a real location');
         console.log(error);
     }
   }
@@ -88,33 +94,45 @@
     const data = await getWeather(city);
     const week = getDates();
     week[0] = 'Today';
-    const days = document.querySelectorAll('.next-days');
-    const arr = [...days];
 
+    const days = document.querySelectorAll('.next-days');
+    const maxs = document.querySelectorAll('.max');
+    const mins = document.querySelectorAll('.min');
+    const imgs = document.querySelectorAll('.day-img');
+
+
+    const arrDays = [...days];
+    const forecast = data.forecast.forecastday;
+
+    console.log(forecast);
     for (let i = 0; i < 3; i++) {
-      arr[i].textContent = week[i];
+      arrDays[i].textContent = week[i];
+      maxs[i].textContent = forecast[i].day.maxtemp_c;
+      mins[i].textContent = forecast[i].day.mintemp_c;
+      imgs[i].src = forecast[i].day.condition.icon;
     }
   }
 
-
+  async function renderData() {
+    try {
+      const weatherPromise = await renderWeather();
+      const forecastPromise = await renderForecast();
+    } catch (error) {
+      console.error(error);
+    }
+  }
   
   
-const submit = document.getElementById('submit');
-const searchInput = document.getElementById('search-input');
-submit.addEventListener('click', event => {
+  const submit = document.getElementById('submit');
+  const searchInput = document.getElementById('search-input');
+  submit.addEventListener('click', event => {
   event.preventDefault();
   renderWeather(searchInput.value);
-})
+  renderForecast(searchInput.value);
+  searchInput.value = '';
+  });
 
 
+  renderData();
 
 
-// Handle error with better design and UI when searching //
-// Forecast Section // 
-// Charge Loader untill the promise is ready // 
-// Design Input and submit // 
-// Media Queries // 
-
-
-renderWeather();
-renderForecast();
