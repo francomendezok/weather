@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="#" type="image/x-icon">
     <title>Weather</title>
     <script src="main.js" defer></script>
   </head>
@@ -12,7 +13,7 @@
         <div class="center">
             <div class="logo-container">
                 <img src="./images/earth.png" alt="">
-                <p>Weather APP</p>
+                <p>Weather</p>
             </div>
             <div class="search-container">
                 <input type="text" name="text" id="search-input" placeholder="Search Location">
@@ -37,24 +38,33 @@
             </div>
             <div class="inner-city-temperature">
                 <p id="temperature"></p>
-                <p id="temperature-fahrenheit"></p>
+                <p id="temperature-max-min"></p>
             </div>
         </div>
         <div class="forecast">
             <div class="day-forecast">
-                <p></p>
+                <p class="next-days"></p>
                 <img src="" alt="">
-                <p class="day-forecast-time"></p>
+                <div class="max-min-forecast">
+                    <p class="max"></p>
+                    <p class="min"></p>
+                </div>
             </div>
             <div class="day-forecast">
-                <p></p>
+                <p class="next-days"></p>
                 <img src="" alt="">
-                <p class="day-forecast-time"></p>
+                <div class="max-min-forecast">
+                    <p class="max"></p>
+                    <p class="min"></p>
+                </div>
             </div>
             <div class="day-forecast">
-                <p></p>
+                <p class="next-days"></p>
                 <img src="" alt="">
-                <p class="day-forecast-time"></p>
+                <div class="max-min-forecast">
+                    <p class="max"></p>
+                    <p class="min"></p>
+                </div>
             </div>
         </div>
     </main>

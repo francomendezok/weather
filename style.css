@@ -50,14 +50,14 @@ body, html {
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    height: 100%;
+    height: 150%;
     font-family: Inter;
 }
 
 header {
     background: radial-gradient(circle, #201d1d, #222222);
     width: 100%;
-    height: 20%;
+    height: 10%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -71,6 +71,7 @@ header {
     justify-content: space-evenly;
     width: 30%;
     height: 100%;
+    align-self: center;
 }
 
 .logo-container {
@@ -97,7 +98,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-around;
     background: radial-gradient(circle, #201d1d, #222222);
 
 }
@@ -107,15 +108,16 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-    width: 247px;
-    height: 264px;
+    width: 284.05px;
+    height: 304.8px;
     border-radius: 16px;
     border: 1px solid var(--light-pop-boder, rgba(255, 255, 255, 0.15));
     background: #1D2837;
     box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.20);
     backdrop-filter: blur(40px);
     color: white;
-
+    text-overflow: ellipsis;
+    text-align: center;
 }
 
 .inner-city-time, .inner-city-temperature {
@@ -126,8 +128,8 @@ main {
 }
 
 #img-weather {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
 }
 
 .todays-weather-img {
@@ -142,10 +144,12 @@ main {
 #city {
     color: #FFF;
     font-family: Inter;
-    font-size: 20px;
+    font-size: 25px;
     font-style: normal;
     font-weight: 500;
-    line-height: 20px; /* 142.857% */
+    line-height: 20px; 
+    text-align: left;
+    margin-left: 5%;
 }
 
 #condition {
@@ -153,7 +157,7 @@ main {
     font-family: Inter;
 }
 
-#hour, #temperature, #temperature-fahrenheit {
+#hour, #temperature, #temperature-max-min {
     color: rgba(255, 255, 255, 0.68);
     font-family: Inter;
     font-size: 14px;
@@ -166,15 +170,100 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     color: #FFF;
     font-family: Inter;
     height: 15%;
+    width: 40%;
+    font-size: 200%;
+    border-radius: 6px;
+    text-align: center;
 }
 
 #flag {
     border-radius: 6px;
-    width: 80px;
-    height: 50px;
+    width: 120px;
+    height: 80px;
 }
 
+.forecast {
+    width: 284.05px;
+    height: 304.8px;
+    border-radius: 16px;
+    border: 1px solid var(--light-pop-boder, rgba(255, 255, 255, 0.15));
+    background: #121212;
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(40px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+}
+
+.day-forecast {
+    border: 1px solid white;
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.day-forecast img {
+    display: flex;
+    width: 36px;
+    height: 36px;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.next-days {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
+
+.max-min-forecast {
+    display: flex;
+    justify-content: space-around;
+}
+
+.max {
+    color: #FFF;
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
+
+.min {
+    width: 22px;
+    height: 20px;
+    color: rgba(255, 255, 255, 0.68);
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px; 
+}
+
+input[type='text'] {
+    border: 1px solid var(--light-pop-boder, rgba(255, 255, 255, 0.15));
+    background: #1D2837;
+    box-shadow: 0px 6px 20px 0px rgba(0, 0, 0, 0.20);
+    backdrop-filter: blur(40px);
+    border: 16px;
+    height: 100%;
+    color: white;
+}
+
+input[type='text']::placeholder {
+    color: white;
+    font-family: Inter;
+    text-align: center;
+}
