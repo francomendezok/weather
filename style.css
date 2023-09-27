@@ -300,6 +300,9 @@ input[type='text']::placeholder {
     background-color: lightgreen;
 }
 
+ .hidden {
+    display: none;
+  }
 
 
 @media (max-width: 500px) {
